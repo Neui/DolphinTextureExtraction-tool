@@ -19,7 +19,7 @@ namespace AuroraLip.Compression.Formats
     public class LZSS : ICompression, IMagicIdentify
     {
 
-        public string Magic { get; } = "LzS";
+        public virtual string Magic { get; } = "LzS";
 
         public int MagicOffset { get; } = 0;
 
@@ -27,12 +27,12 @@ namespace AuroraLip.Compression.Formats
 
         public bool CanRead { get; } = true;
 
-        public byte[] Compress(in byte[] Data)
+        public virtual byte[] Compress(in byte[] Data)
         {
             throw new NotImplementedException();
         }
 
-        public byte[] Decompress(in byte[] Data)
+        public virtual byte[] Decompress(in byte[] Data)
         {
             uint decompressedSize;
 
@@ -49,15 +49,23 @@ namespace AuroraLip.Compression.Formats
                 decompressedSize = BitConverter.ToUInt32(Data, 0);
             }
 
+            List<byte> outdata = DecompressRaw(Data, (ushort)(IsMatch(in Data) ? 16 : 4));
+
+            if (decompressedSize != outdata.Count)
+                throw new Exception($"Size mismatch: got {outdata.Count} bytes after decompression, expected {decompressedSize}.\n");
+
+            return outdata.ToArray();
+        }
+
+        protected List<byte> DecompressRaw(in byte[] Data, ushort readidx)
+        {
             List<byte> outdata = new List<byte>();
             byte[] BUFFER = new byte[4096];
 
             for (int i = 0; i < BUFFER.Length; i++) BUFFER[i] = 0;
             byte flags8 = 0;
             ushort writeidx = 0xFEE;
-            ushort readidx = 0;
             uint fidx = 0x10;
-            if (!IsMatch(in Data)) fidx = 4;
 
             while (fidx < Data.Length)
             {
@@ -91,22 +99,28 @@ namespace AuroraLip.Compression.Formats
                     if (fidx >= Data.Length) break;
                 }
             }
-
-            if (decompressedSize != outdata.Count)
-                throw new Exception($"Size mismatch: got {outdata.Count} bytes after decompression, expected {decompressedSize}.\n");
-
-            return outdata.ToArray();
+            return outdata;
         }
 
-        private bool IsMatch(in byte[] Data)
+        protected virtual bool IsMatch(in byte[] Data)
         {
-            // is LzS
-            return Data.Length > 16 && Data[0] == 76 && Data[1] == 122 && Data[2] == 83;
+            if (Data.Length <= 16)
+                return false;
+
+            uint i = 0;
+            foreach (char c in Magic)
+            {
+                if (Data[i] != ((byte)c))
+                    return false;
+                i++;
+            }
+
+            return true;
         }
 
-        public bool IsMatch(Stream stream, in string extension = "")
+        public virtual bool IsMatch(Stream stream, in string extension = "")
         {
-            if (stream.Length < 16 && stream.MatchString(Magic))
+            if (stream.Length > 16 && stream.MatchString(Magic))
 {
                 stream.Position = 12;
                 // compressed size match?

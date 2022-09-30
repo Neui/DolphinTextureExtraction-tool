@@ -335,6 +335,7 @@ namespace DolphinTextureExtraction_tool
                     case ".breff":
                     case ".zlib":
                     case ".lz77":
+                    case ".gslzss":
                     case ".prs":
                     case ".wtm":
                     case ".vld":

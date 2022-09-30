@@ -319,13 +319,17 @@ namespace AuroraLip.Common
             new FormatInfo(".h4m", "HVQM4 1.4" , FormatType.Video,"","Hudson Soft"),
             new FormatInfo(".h4m", "HVQM4 1.5", FormatType.Video,"","Hudson Soft"),
 
+            //Genius Sonority (based on Pokemon XD Gale of Darkness)
+            new FormatInfo(".fsys", "FSYS", FormatType.Archive, "General Archive for GS assets, uses ID system", "Genius Sonority"),
+            new FormatInfo(".gtx", FormatType.Texture, "", "Genius Sonority"){ Class = typeof(GTX) },
+            new FormatInfo(".gslzss", "LZSS", FormatType.Archive, "Genius Sonority flavoured LZSS compression", "Genius Sonority"){ Class = typeof(GSLZSS) },
+
             //mix
             //new FormatInfo(".cmpr","CMPR", FormatType.Archive, "compressed Data"),
             new FormatInfo(".ash","ASH0", FormatType.Archive, "ASH compressed Data"), //https://github.com/trapexit/wiiqt/blob/master/WiiQt/ash.cpp
             new FormatInfo(".fpk", FormatType.Archive, "compressed"),
             new FormatInfo(".dir", FormatType.Else, "Archive Info"),
             new FormatInfo(".pk", FormatType.Archive), //https://github.com/RGBA-CRT/LSPK-Extracter
-            new FormatInfo(".fsys","FSYS", FormatType.Archive, "Pokemon"), //https://projectpokemon.org/home/tutorials/rom/stars-pok%C3%A9mon-colosseum-and-xd-hacking-tutorial/part-1-file-decompression-and-recompression-r5/
             new FormatInfo(".asr","AsuraZlb", FormatType.Archive, "Rebellion"),
             new FormatInfo(".dict", new byte[]{169,243,36,88,6,1},0, FormatType.Archive),
             new FormatInfo(".dat", "AKLZ~?Qd=ÌÌÍ", FormatType.Archive,"Skies of Arcadia Legends"),
