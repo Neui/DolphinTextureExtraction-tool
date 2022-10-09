@@ -407,7 +407,7 @@ namespace DolphinTextureExtraction_tool
                 }
                 if (Format.Class.GetInterface(nameof(ICompression)) != null)
                 {
-                    Scan(((ICompression)Activator.CreateInstance(Format.Class)).Decompress(stream), subdirectory);
+                    Scan(((ICompression)Activator.CreateInstance(Format.Class)).Decompress(stream), subdirectory, Path.GetExtension(subdirectory));
                     return true;
                 }
                 //External classes
