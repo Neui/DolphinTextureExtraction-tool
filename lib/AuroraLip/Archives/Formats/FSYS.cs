@@ -96,13 +96,13 @@ namespace AuroraLip.Archives.Formats
 
         private String getExtensionByType(uint filetype)
         {
-            if (filetype == 0x01) // Actually more like an map/"floor", but uses the same format as models
-                return ".gsmodel";
-            if (filetype == 0x02)
-                return ".gsmodel";
+            if (filetype == 0x01) // Map/"Floor"
+                return ".gsscene";
+            if (filetype == 0x02) // Model
+                return ".gsscene";
             if (filetype == 0x09)
                 return ".gtx";
-            return ".bin";
+            return $".{filetype}.bin";
         }
     }
 }

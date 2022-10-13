@@ -323,6 +323,7 @@ namespace AuroraLip.Common
             new FormatInfo(".fsys", "FSYS", FormatType.Archive, "General Archive for GS assets, uses ID system", "Genius Sonority"),
             new FormatInfo(".gtx", FormatType.Texture, "", "Genius Sonority"){ Class = typeof(GTX) },
             new FormatInfo(".gslzss", "LZSS", FormatType.Archive, "Genius Sonority flavoured LZSS compression", "Genius Sonority"){ Class = typeof(GSLZSS) },
+            new FormatInfo(".gsscene", FormatType.Texture, "Genius Sonority Scene File (based on sysdolphin)", "Genius Sonority"){ Class = typeof(GSScene) },
 
             //mix
             //new FormatInfo(".cmpr","CMPR", FormatType.Archive, "compressed Data"),
