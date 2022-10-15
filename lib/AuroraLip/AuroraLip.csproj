@@ -52,6 +52,7 @@
     <Compile Include="Archives\Formats\CPK.cs" />
     <Compile Include="Archives\Formats\FBC.cs" />
     <Compile Include="Archives\Formats\FBTI.cs" />
+    <Compile Include="Archives\Formats\PKX.cs" />
     <Compile Include="Archives\Formats\GVMH.cs" />
     <Compile Include="Archives\Formats\MOD.cs" />
     <Compile Include="Archives\Formats\NARC.cs" />

@@ -102,6 +102,8 @@ namespace AuroraLip.Archives.Formats
                 return ".gsscene";
             if (filetype == 0x09)
                 return ".gtx";
+            if (filetype == 0x0F)
+                return ".pkx";
             return $".{filetype}.bin";
         }
     }
