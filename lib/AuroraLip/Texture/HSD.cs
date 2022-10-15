@@ -53,6 +53,11 @@ namespace AuroraLip.Texture.Formats
                 uint padding_1 = stream.ReadUInt32(Endian.Big);
                 uint padding_2 = stream.ReadUInt32(Endian.Big);
 
+                if (file_size != stream.Length)
+                {
+                    throw new Exception($"Expected filesize {file_size} does not match the given filesize {stream.Length}");
+                }
+
                 uint data_offset = 0x20;
                 uint relocation_offset = data_offset + data_size;
                 uint public_offset = relocation_offset + nb_reloc * 4;
