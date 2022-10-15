@@ -370,7 +370,7 @@ namespace AuroraLip.Texture.Formats
                         }
 
                         stream.Seek(texture_data_offset, SeekOrigin.Begin);
-                        textures.Add(new TexEntry(stream, palette_data, texture_format, palette_format, (int)palette_n_entries, (int)texture_width, (int)texture_height)
+                        textures.Add(new TexEntry(stream, palette_data, texture_format, palette_format, (int)palette_n_entries, (int)texture_width, (int)texture_height, (int)texture_mipmap)
                         {
                             WrapS = (GXWrapMode)wrap_s,
                             WrapT = (GXWrapMode)wrap_t,
