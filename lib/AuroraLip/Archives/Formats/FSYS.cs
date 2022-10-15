@@ -104,6 +104,8 @@ namespace AuroraLip.Archives.Formats
                 return ".gtx";
             if (filetype == 0x0F)
                 return ".pkx";
+            if (filetype == 0x0A) // Particle
+                return ".gpt";
             return $".{filetype}.bin";
         }
     }

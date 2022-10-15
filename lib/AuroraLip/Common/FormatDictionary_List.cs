@@ -325,6 +325,9 @@ namespace AuroraLip.Common
             new FormatInfo(".gslzss", "LZSS", FormatType.Archive, "Genius Sonority flavoured LZSS compression", "Genius Sonority"){ Class = typeof(GSLZSS) },
             new FormatInfo(".gsscene", FormatType.Texture, "Genius Sonority Scene File (based on sysdolphin)", "Genius Sonority"){ Class = typeof(GSScene) },
             new FormatInfo(".pkx", FormatType.Archive, "Genius Sonority Pokémons", "Genius Sonority"){ Class = typeof(PKX) },
+            new FormatInfo(".gpt", "GPT0", FormatType.Unknown, "GS Particle v0", "Genius Sonority"),
+            new FormatInfo(".gpt", "GPT1", FormatType.Unknown, "GS Particle v1", "Genius Sonority"),
+            new FormatInfo(".gpt", new byte[]{ 0x01, 0xF0, 0x5, 0xDA, 0x00, 0x03, 0x00, 0x02 }, 0, FormatType.Unknown, "GS Particle (unknown)", "Genius Sonority"),
 
             //mix
             //new FormatInfo(".cmpr","CMPR", FormatType.Archive, "compressed Data"),
